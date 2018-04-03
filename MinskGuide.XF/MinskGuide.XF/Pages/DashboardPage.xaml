@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MinskGuide.XF.Pages.DashboardPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="hotelButton" Text="Hotels" Grid.Row="0" Grid.Column="0" Command="{ Binding ButtonCommand }" />
+        <Button x:Name="foodButton" Text="Food" Grid.Row="0" Grid.Column="1" Command="{ Binding ButtonCommand }"/>
+        <Button x:Name="placeButton" Text="Places" Grid.Row="1" Grid.Column="0" Command="{ Binding ButtonCommand }"/>
+        <Button x:Name="hospitalButton" Text="Hospitals" Grid.Row="1" Grid.Column="1" Command="{ Binding ButtonCommand }"/>
+        <Button x:Name="relaxButton" Text="Relax" Grid.Row="2" Grid.Column="0"/>
+        <Button x:Name="bankButton" Text="Banks" Grid.Row="2" Grid.Column="1"/>
+        <Button x:Name="taxiButton" Text="Taxi" Grid.Row="3" Grid.Column="0"/>
+    </Grid>
+</ContentPage>
