@@ -1,4 +1,7 @@
-﻿using MinskGuide.Core.Services;
+﻿using MinskGuide.Core.Entities;
+using MinskGuide.Core.Enums;
+using MinskGuide.Core.Services;
+using MinskGuide.Core.Services.Realization;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,20 +17,32 @@ namespace MinskGuide.Core.ViewModels
     {
         //public event PropertyChangedEventHandler PropertyChanged;
         private INavigationService _nav;
+		private ILocalData _data;
 
         public DashboardViewModel()
         {
             _nav = AppContainer.Instance.GetInstance<INavigationService>();
-            var n = _nav;
-            ButtonCommand = new Command<string>(DoButtonCommand);
+			_data = new DataService();
+
+			ButtonCommand = new Command<string>(DoButtonCommand);
         }
 
         public ICommand ButtonCommand { get; set; } 
 
-        private async void DoButtonCommand(string text)
+		private async void DoButtonCommand(string param)
         {
-            var vm = new ActivitiesListViewModel();
+			var data = _data.GetActivities(GetActivityType(param));
+
+			var vm = new ActivitiesListViewModel(data);
+
             _nav.NavigateTo(vm);
         }
+
+		private ActivityTypeEnum GetActivityType(string num)
+		{
+			int typeNum = int.Parse(num);
+			var resultType = (ActivityTypeEnum)typeNum;
+			return resultType;
+		}
     }
 }

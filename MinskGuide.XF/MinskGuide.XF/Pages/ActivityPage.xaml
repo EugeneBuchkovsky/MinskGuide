@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="MinskGuide.XF.Pages.ActivityPage">
+    <ContentPage.Content>
+        <StackLayout x:Name="MainStack" Orientation="Vertical">
+            <Image Source="{Binding ImageUrl}" HeightRequest="300"/>
+
+            <Label HeightRequest="40" x:Name="Name" Text="{Binding Name}" HorizontalTextAlignment="Center"/>
+
+            <StackLayout x:Name="Contacts" HeightRequest="80">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="phoneButton" Text="Phone" Command="{Binding CallCommand}" Grid.Row="0" Grid.Column="0"/>
+                    <Button x:Name="foodButton" Text="Site" Command="{Binding SiteCommand}" Grid.Row="0" Grid.Column="1"/>
+                    <Button x:Name="placeButton" Text="Smth" Grid.Row="0" Grid.Column="2"/>
+                </Grid>
+            </StackLayout>
+            
+            <Label x:Name="Description" HeightRequest="30" Text="{Binding Address}" />
+
+            <Button x:Name="MapButton" HeightRequest="100" Text=" MAP BUTTON " TextColor="Red" Command="{Binding MapCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

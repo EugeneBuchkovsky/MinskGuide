@@ -75,9 +75,23 @@ namespace MinskGuide.XF.Services
             if (vm is ActivitiesListViewModel)
             {
                 var Page = new ActivitiesListPage();
-                Page.BindingContext = new ActivitiesListViewModel();
+                Page.BindingContext = vm;
                 return Page;
             }
+			if(vm is ActivityListItemViewModel)
+			{
+				var Page = new ActivityPage();
+				Page.BindingContext = vm;
+				return Page;
+			}
+			if(vm is MapViewModel)
+			{
+				var Page = new MapPage();
+				Page.BindingContext = vm;
+				Page.Longitude = ((MapViewModel)vm).Longitude;
+				Page.Latitude = ((MapViewModel)vm).Latitude;
+				return Page;
+			}
 
             throw new Exception("Not implemented page");
         }

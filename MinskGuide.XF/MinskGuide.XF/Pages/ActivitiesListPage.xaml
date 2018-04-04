@@ -1,18 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MinskGuide.XF;assembly=MinskGuide.XF"
              x:Class="MinskGuide.XF.Pages.ActivitiesListPage">
     <ListView ItemsSource="{Binding ActivitiesList}"
-            CachingStrategy="RecycleElement">
+            CachingStrategy="RecycleElement"
+              SelectedItem="{Binding SelectedItem}"
+              RowHeight="200">
             
     <!--Built in Cells-->
     <ListView.ItemTemplate>
       <DataTemplate>
-                <ViewCell Height="600">
-                    <StackLayout Orientation="Horizontal" HeightRequest="600">
-                        <Label Text="{Binding Name}" VerticalOptions="FillAndExpand" HorizontalOptions="Start" VerticalTextAlignment="Center"/>
-                        <Label Text="{Binding Address}" VerticalOptions="FillAndExpand" HorizontalOptions="End" VerticalTextAlignment="Center"/>
-                    </StackLayout>
+                <ViewCell>
+                    <AbsoluteLayout>
+                            <Image Source="{Binding ImageUrl}" AbsoluteLayout.LayoutBounds="0,0, 700, 195" />
+                            <Label Text="{Binding Name}" TextColor="Black" VerticalOptions="End" AbsoluteLayout.LayoutBounds="10, 175,  100, 20"/>
+                            <Label Text="{Binding Address}" TextColor="White" VerticalOptions="End" AbsoluteLayout.LayoutBounds="160,175,100,20"/>
+                        
+                    </AbsoluteLayout>
                 </ViewCell>
       </DataTemplate>
     </ListView.ItemTemplate>
